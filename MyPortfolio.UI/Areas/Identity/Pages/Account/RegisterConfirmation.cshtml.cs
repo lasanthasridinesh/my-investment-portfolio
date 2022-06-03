@@ -44,7 +44,7 @@ namespace MyPortfolio.UI.Areas.Identity.Pages.Account
         /// </summary>
         public string EmailConfirmationUrl { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string email, string returnUrl = null)
+        public IActionResult OnGetAsync(string email, string returnUrl = null)
         {
             return Page();
         }
