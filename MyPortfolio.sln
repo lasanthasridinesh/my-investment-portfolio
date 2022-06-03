@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Domain", "01-Domain", "{679EDD07-7C06-4038-A56A-3C7394BEFACF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Infrastructure", "02-Infrastructure", "{BBBDF23A-32EF-45B6-AB9E-BE711EC48465}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Business", "03-Business", "{B76046C7-63C6-4CCA-B5D6-CC0870166CE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Presentation", "04-Presentation", "{8299D052-C7F7-46C9-85BC-E58791864740}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.UI", "MyPortfolio.UI\MyPortfolio.UI.csproj", "{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3} = {8299D052-C7F7-46C9-85BC-E58791864740}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A15EFE2-EA57-4C42-806C-4646A08E2F70}
+	EndGlobalSection
+EndGlobal
