@@ -3,8 +3,13 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to My Portfolio!</h1>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <p>Please <a href="/Identity/Account/Login">LOGIN</a> to visualize your portfolio performance.</p>
+    }
 </div>
