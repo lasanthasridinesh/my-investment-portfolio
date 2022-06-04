@@ -52,7 +52,7 @@ namespace MyPortfolio.UI.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
-            [Display(Name = "Email Address")]
+            [Display(Name = "Email")]
             public string Email { get; set; }
             [Display(Name = "Username")]
             public string Username { get; set; }
