@@ -1,10 +1,10 @@
 <h2>Trades</h2>
 
-<p>This is a simple example of an Angular component.</p>
+<p>Please select a date to view your trades in the selected date.</p>
 
-<p aria-live="polite">Current count: <strong>{{ currentCount }}</strong></p>
+<!--<p aria-live="polite">Current count: <strong>{{ currentCount }}</strong></p>
 
-<button class="btn btn-primary" (click)="incrementCounter()">Increment</button>
+<button class="btn btn-primary" (click)="incrementCounter()">Increment</button>-->
 <br />
 <mat-form-field>
   <input matInput [matDatepicker]="picker" placeholder="Choose a date"
@@ -14,5 +14,5 @@
 </mat-form-field>
 
 <div class="example-events">
-  <div *ngFor="let e of events">{{e}}</div>
+  <div *ngFor="let e of tradesArray">{{e.ticker}}</div>
 </div>

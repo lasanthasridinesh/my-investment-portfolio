@@ -7,7 +7,17 @@ const PROXY_CONFIG = [
   {
     context: [
       "/weatherforecast",
-   ],
+    ],
+    target: target,
+    secure: false,
+    headers: {
+      Connection: 'Keep-Alive'
+    }
+  },
+  {
+    context: [
+      "/trades",
+    ],
     target: target,
     secure: false,
     headers: {

@@ -1,8 +1,16 @@
+using MyPortfolio.Repositories.Implementation;
+using MyPortfolio.Repositories.Interfaces;
+using MyPortfolio.Services;
+using MyPortfolio.Services.Implementation;
+using MyPortfolio.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddRepository();
+builder.Services.AddScoped<ITradeService, TradeService>();
 
 var app = builder.Build();
 
@@ -13,7 +21,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
-
 
 app.MapControllerRoute(
     name: "default",

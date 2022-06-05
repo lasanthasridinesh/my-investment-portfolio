@@ -1,4 +1,5 @@
 ﻿using MyPortfolio.DBModel.DOM;
+using MyPortfolio.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,18 +20,20 @@ namespace MyPortfolio.DataGenerator
                 "generate a set of JSON files with test data. " +
                 "One JSON file will be generated per day.");
 
-            string DATE_FORMAT = "yyyy-MM-dd";
-            DateTime startDate, endDate;
 
-            EnterDateRange(DATE_FORMAT, out startDate, out endDate);
+            EnterDateRange(Constants.DATE_FORMAT, out DateTime startDate, out DateTime endDate);
 
             var numberOfDays = (endDate - startDate).TotalDays;
-            var symbols = new List<string> { "A", "A.TRV", "B", "B.TRV", "C", "C.TRV" };
+            var symbols = new List<string> { "A", "A.TRV", "B", "B.TRV",
+                "C", "C.TRV", "IBM","TSCDF","TSCDY","GO","GOAC","GOOG",
+                "GOODN","GOODLUCK.BSE","NKE","NKE.DEX","PU13.LON","MSA","MSACX",
+                "DIS","DISA","DISAQ.BSE","TATACHEM.BSE","TATAINVEST.BSE","TATAMTRDVR.BSE",
+                "DEMO","TESS","SPACEINCUBA.BSE"};
+            var trades = new List<Trade>();
 
             for (var i = 0; i <= numberOfDays; i++)
             {
-                var tradeDate = startDate.AddDays(i);
-                var dailyTrades = new List<Trade>();
+
                 foreach (var symbol in symbols)
                 {
                     var dailyTradeCount = new Random().Next(1, 25);
@@ -38,24 +41,21 @@ namespace MyPortfolio.DataGenerator
                     {
                         var quantity = RandomSupplier.Quantity();
                         var price = RandomSupplier.Price();
-                        dailyTrades.Add(new Trade()
+                        trades.Add(new Trade()
                         {
                             UserId = "user001",
                             BuyOrSell = RandomSupplier.BuyOrSell(),
                             Quantity = quantity,
                             Ticker = symbol,
                             UnitPrice = price,
-                            TradeDate = tradeDate,
+                            TradeDate = startDate.AddDays(i),
                             TotalCost = Math.Round(quantity * price, 2)
                         });
                     }
                 }
-
-                var dailyTradeDataJson = JsonSerializer.Serialize(dailyTrades);
-                File.WriteAllText(@"..\..\..\..\MockData\" + tradeDate.Date.ToString(DATE_FORMAT) + ".json", dailyTradeDataJson);
             }
-
-
+            var dailyTradeDataJson = JsonSerializer.Serialize(trades);
+            File.WriteAllText(@"..\..\..\..\MockData\" + "trade-data.json", dailyTradeDataJson);
         }
 
         private static void EnterDateRange(string DATE_FORMAT, out DateTime startDate, out DateTime endDate)
@@ -66,8 +66,7 @@ namespace MyPortfolio.DataGenerator
             {
                 Console.Write("Enter Start Date (" + DATE_FORMAT + ") : ");
                 var startDateInput = Console.ReadLine();
-                DateTime startDateTimeValue;
-                if (DateTime.TryParse(startDateInput, out startDateTimeValue))
+                if (DateTime.TryParse(startDateInput, out DateTime startDateTimeValue))
                 {
                     startDate = startDateTimeValue;
                 }
@@ -77,8 +76,7 @@ namespace MyPortfolio.DataGenerator
                 }
                 Console.Write("Enter End Date (" + DATE_FORMAT + ") : ");
                 var endDateInput = Console.ReadLine();
-                DateTime endDateTimeValue;
-                if (DateTime.TryParse(endDateInput, out endDateTimeValue))
+                if (DateTime.TryParse(endDateInput, out DateTime endDateTimeValue))
                 {
                     endDate = endDateTimeValue;
                 }

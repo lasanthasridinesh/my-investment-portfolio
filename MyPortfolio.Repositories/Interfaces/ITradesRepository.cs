@@ -9,6 +9,6 @@ namespace MyPortfolio.Repositories.Interfaces
 {
     public interface ITradesRepository
     {
-        IEnumerable<Trade> GetTradesFor(DateTime date);
+        IList<Trade>? GetTradesFor(DateTime date);
     }
 }

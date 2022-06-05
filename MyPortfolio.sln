@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.DataGenerator",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.UserInterface", "MyPortfolio.UserInterface\MyPortfolio.UserInterface.csproj", "{20D59E52-33C9-4751-A758-62C713C2105C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Utils", "MyPortfolio.Utils\MyPortfolio.Utils.csproj", "{75C088D8-C7C5-4405-A25A-3D4B72DBE651}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{20D59E52-33C9-4751-A758-62C713C2105C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20D59E52-33C9-4751-A758-62C713C2105C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20D59E52-33C9-4751-A758-62C713C2105C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C088D8-C7C5-4405-A25A-3D4B72DBE651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C088D8-C7C5-4405-A25A-3D4B72DBE651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C088D8-C7C5-4405-A25A-3D4B72DBE651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C088D8-C7C5-4405-A25A-3D4B72DBE651}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{4D8E53BB-2DE3-4537-8F2C-8D045A0C6819} = {EFD558BA-D753-4F51-B3DC-AB6ABA4F95AD}
 		{C834CAED-2EB8-4586-8A46-7B7DB2961A0E} = {4D8E53BB-2DE3-4537-8F2C-8D045A0C6819}
 		{20D59E52-33C9-4751-A758-62C713C2105C} = {8299D052-C7F7-46C9-85BC-E58791864740}
+		{75C088D8-C7C5-4405-A25A-3D4B72DBE651} = {679EDD07-7C06-4038-A56A-3C7394BEFACF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A15EFE2-EA57-4C42-806C-4646A08E2F70}

@@ -1,19 +1,45 @@
 ﻿using MyPortfolio.DBModel.DOM;
 using MyPortfolio.Repositories.Interfaces;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MyPortfolio.Repositories.Implementation
 {
-    internal class TradesRepository : ITradesRepository
+    public class TradesRepository : ITradesRepository
     {
-        public static Dictionary<DateTime, IList<Trade>> tradesTable = new();
-        public IEnumerable<Trade> GetTradesFor(DateTime date)
+        private readonly static ConcurrentDictionary<DateTime, IList<Trade>> tradesTable = new();
+
+        public TradesRepository()
         {
-            throw new NotImplementedException();
+            if (tradesTable.IsEmpty)
+            {
+                var data = JsonSerializer.Deserialize<IList<Trade>>(
+                    File.ReadAllText(@"..\MockData\" + "trade-data.json"));
+                if (data != null)
+                {
+                    foreach (var dataItem in data)
+                    {
+                        if (tradesTable.ContainsKey(dataItem.TradeDate))
+                        {
+                            tradesTable[dataItem.TradeDate].Add(dataItem);
+                        }
+                        else
+                        {
+                            tradesTable[dataItem.TradeDate] = new List<Trade>();
+                        }
+                    }
+                }
+            }
+        }
+
+        public IList<Trade>? GetTradesFor(DateTime date)
+        {
+            return tradesTable.ContainsKey(date) ? tradesTable[date.Date] : null;
         }
     }
 }

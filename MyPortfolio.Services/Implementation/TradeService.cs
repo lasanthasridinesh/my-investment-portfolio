@@ -20,7 +20,16 @@ namespace MyPortfolio.Services.Implementation
 
         public IList<TradeDTO> GetTradesByDate(DateTime date)
         {
-            throw new NotImplementedException();
+            IList<TradeDTO> tradeDTOs = new List<TradeDTO>();
+            var trades = _tradesRepository.GetTradesFor(date.Date);
+            if(trades != null)
+            {
+                foreach(var item in trades)
+                {
+                    tradeDTOs.Add(TradeDTO.GetInstance(item));
+                }
+            }
+            return tradeDTOs;
         }
     }
 }

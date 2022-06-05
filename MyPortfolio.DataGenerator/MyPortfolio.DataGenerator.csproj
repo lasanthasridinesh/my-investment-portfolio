@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyPortfolio.DBModel\MyPortfolio.DBModel.csproj" />
+    <ProjectReference Include="..\MyPortfolio.Utils\MyPortfolio.Utils.csproj" />
   </ItemGroup>
 
 </Project>

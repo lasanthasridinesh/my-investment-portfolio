@@ -26,7 +26,7 @@ import { MaterialModule } from './material.module';
     MaterialModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'trades', component: TradesComponent },
+      { path: 'daily-trades', component: TradesComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
