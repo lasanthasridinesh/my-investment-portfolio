@@ -10,6 +10,7 @@ namespace MyPortfolio.Repositories.Implementation
 {
     internal class TradesRepository : ITradesRepository
     {
+        public static Dictionary<DateTime, IList<Trade>> tradesTable = new();
         public IEnumerable<Trade> GetTradesFor(DateTime date)
         {
             throw new NotImplementedException();
