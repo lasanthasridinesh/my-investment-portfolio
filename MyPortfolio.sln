@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Business", "03-Business"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Presentation", "04-Presentation", "{8299D052-C7F7-46C9-85BC-E58791864740}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.UI", "MyPortfolio.UI\MyPortfolio.UI.csproj", "{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.Services", "MyPortfolio.Services\MyPortfolio.Services.csproj", "{B8993C41-0A1F-4708-A6E4-E92787929D79}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.Connectors", "MyPortfolio.Connectors\MyPortfolio.Connectors.csproj", "{B36F8FB4-789F-4A31-8B86-7668B32E29E1}"
@@ -39,10 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B8993C41-0A1F-4708-A6E4-E92787929D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B8993C41-0A1F-4708-A6E4-E92787929D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8993C41-0A1F-4708-A6E4-E92787929D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,7 +66,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3} = {8299D052-C7F7-46C9-85BC-E58791864740}
 		{B8993C41-0A1F-4708-A6E4-E92787929D79} = {B76046C7-63C6-4CCA-B5D6-CC0870166CE8}
 		{B36F8FB4-789F-4A31-8B86-7668B32E29E1} = {B76046C7-63C6-4CCA-B5D6-CC0870166CE8}
 		{7362C19C-429C-4A7A-B9FA-DC383500EC21} = {BBBDF23A-32EF-45B6-AB9E-BE711EC48465}
