@@ -1,17 +1,25 @@
-<h2>Trades</h2>
 
-<p>Please select a date to view your trades in the selected date.</p>
+<div class="row">
+  <div class="col-md-9">
+    <h2>Trades</h2>
+    <p>Please select a date to view your trades in the selected date.</p>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+             (dateChange)="addEvent('change', $event)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>
+
 
 <!--<p aria-live="polite">Current count: <strong>{{ currentCount }}</strong></p>
 
 <button class="btn btn-primary" (click)="incrementCounter()">Increment</button>-->
 <br />
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-         (dateChange)="addEvent('change', $event)">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+
 
 <!--<div class="example-events">
   <div *ngFor="let e of tradesArray">{{e.ticker}}</div>

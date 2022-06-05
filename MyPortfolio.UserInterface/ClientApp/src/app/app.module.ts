@@ -7,17 +7,17 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TradesComponent } from './trades/trades.component';
 import { MaterialModule } from './material.module';
+import { PerformanceComponent } from './performance/performance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent,
-    TradesComponent
+    TradesComponent,
+    PerformanceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,7 +27,7 @@ import { MaterialModule } from './material.module';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'daily-trades', component: TradesComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'performance', component: PerformanceComponent }
     ])
   ],
   providers: [],
