@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\material.module.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="ClientApp\src\assets\column.jpg" />
     <Content Include="ClientApp\src\assets\pie.jpg" />
     <Content Include="ClientApp\src\assets\table.jpg" />
@@ -29,6 +33,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\material.module.ts" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

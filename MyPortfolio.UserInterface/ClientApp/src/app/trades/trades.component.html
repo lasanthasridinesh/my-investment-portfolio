@@ -2,8 +2,17 @@
 
 <p>This is a simple example of an Angular component.</p>
 
-<input type="date" id="start" name="trip-start" value="2018-07-22">
-
 <p aria-live="polite">Current count: <strong>{{ currentCount }}</strong></p>
 
 <button class="btn btn-primary" (click)="incrementCounter()">Increment</button>
+<br />
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+         (dateChange)="addEvent('change', $event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div class="example-events">
+  <div *ngFor="let e of events">{{e}}</div>
+</div>

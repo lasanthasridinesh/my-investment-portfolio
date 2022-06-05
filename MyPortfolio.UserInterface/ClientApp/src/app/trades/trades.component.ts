@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-trades-component',
@@ -10,5 +11,11 @@ export class TradesComponent {
 
   public incrementCounter() {
     this.currentCount++;
+  }
+
+  public events: string[] = [];
+
+  public addEvent(type: string, event: MatDatepickerInputEvent<any,any>) {
+    this.events.push(`${type}: ${event.value}`);
   }
 }
