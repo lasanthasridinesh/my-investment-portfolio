@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace MyPortfolio.Repositories.Implementation
 {
-    internal class TradesRepository : BaseRepository<Trade, int>, ITradesRepository
+    internal class TradesRepository : ITradesRepository
     {
-        internal TradesRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
+        public IEnumerable<Trade> GetTradesFor(DateTime date)
         {
+            throw new NotImplementedException();
         }
     }
 }

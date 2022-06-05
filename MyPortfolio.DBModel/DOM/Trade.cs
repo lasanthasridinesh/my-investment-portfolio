@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using MyPortfolio.DBModel.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyPortfolio.DBModel.DOM
+﻿namespace MyPortfolio.DBModel.DOM
 {
     public class Trade
     {

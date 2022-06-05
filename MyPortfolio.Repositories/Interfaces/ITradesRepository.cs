@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MyPortfolio.Repositories.Interfaces
 {
-    public interface ITradesRepository : IBaseRepository<Trade, int>
+    public interface ITradesRepository
     {
+        IEnumerable<Trade> GetTradesFor(DateTime date);
     }
 }

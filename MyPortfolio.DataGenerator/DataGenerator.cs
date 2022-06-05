@@ -19,16 +19,10 @@ namespace MyPortfolio.DataGenerator
                 "generate a set of JSON files with test data. " +
                 "One JSON file will be generated per day.");
 
-            var DATE_FORMAT = "yyyy-MM-dd";
-            Console.Write("Enter Start Date (" + DATE_FORMAT + ") : ");
-            var startDateInput = Console.ReadLine();
-            var startDate = DateTime.Parse(startDateInput);
-            var startDateString = startDate.Date.ToString(DATE_FORMAT);
-            Console.Write("Enter End Date (" + DATE_FORMAT + ") : ");
-            var endDateInput = Console.ReadLine();
-            var endDate = DateTime.Parse(endDateInput);
-            var endDateString = endDate.Date.ToString(DATE_FORMAT);
-            Console.WriteLine(startDate + "  " + endDate);
+            string DATE_FORMAT = "yyyy-MM-dd";
+            DateTime startDate, endDate;
+
+            EnterDateRange(DATE_FORMAT, out startDate, out endDate);
 
             var numberOfDays = (endDate - startDate).TotalDays;
             var symbols = new List<string> { "A", "A.TRV", "B", "B.TRV", "C", "C.TRV" };
@@ -52,16 +46,51 @@ namespace MyPortfolio.DataGenerator
                             Ticker = symbol,
                             UnitPrice = price,
                             TradeDate = tradeDate,
-                            TotalCost = Math.Round(quantity * price,2)
+                            TotalCost = Math.Round(quantity * price, 2)
                         });
                     }
                 }
 
                 var dailyTradeDataJson = JsonSerializer.Serialize(dailyTrades);
-                File.WriteAllText(@"..\..\..\..\MockData\"+tradeDate.Date.ToString(DATE_FORMAT) + ".json", dailyTradeDataJson);
+                File.WriteAllText(@"..\..\..\..\MockData\" + tradeDate.Date.ToString(DATE_FORMAT) + ".json", dailyTradeDataJson);
             }
 
 
+        }
+
+        private static void EnterDateRange(string DATE_FORMAT, out DateTime startDate, out DateTime endDate)
+        {
+            startDate = default;
+            endDate = default;
+            try
+            {
+                Console.Write("Enter Start Date (" + DATE_FORMAT + ") : ");
+                var startDateInput = Console.ReadLine();
+                DateTime startDateTimeValue;
+                if (DateTime.TryParse(startDateInput, out startDateTimeValue))
+                {
+                    startDate = startDateTimeValue;
+                }
+                else
+                {
+                    throw new Exception("start date is not in correct format!");
+                }
+                Console.Write("Enter End Date (" + DATE_FORMAT + ") : ");
+                var endDateInput = Console.ReadLine();
+                DateTime endDateTimeValue;
+                if (DateTime.TryParse(endDateInput, out endDateTimeValue))
+                {
+                    endDate = endDateTimeValue;
+                }
+                else
+                {
+                    throw new Exception("end date is not in correct format!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

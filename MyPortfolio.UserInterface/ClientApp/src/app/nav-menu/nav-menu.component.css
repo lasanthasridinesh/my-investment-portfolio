@@ -1,0 +1,31 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  font-size: 32px;
+  font-weight: 300;
+  font-family: fantasy;
+  color: #00b359;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.nav-item a.nav-link {
+  font-weight: 600;
+}
+
+#top-nav-bar {
+  background-image: linear-gradient(to right, #80ccff, #ffffff);
+}
