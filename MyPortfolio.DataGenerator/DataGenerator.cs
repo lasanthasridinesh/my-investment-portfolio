@@ -21,8 +21,8 @@ namespace MyPortfolio.DataGenerator
                 "One JSON file will be generated per day.");
 
 
-            EnterDateRange(Constants.DATE_FORMAT, out DateTime startDate, out DateTime endDate);
-
+            EnterDateRange(Constants.DATE_FORMAT, out DateTime startDate);
+            DateTime endDate = DateTime.Today;
             var numberOfDays = (endDate - startDate).TotalDays;
             var symbols = new List<string> { "A", "A.TRV", "B", "B.TRV",
                 "C", "C.TRV", "IBM","TSCDF","TSCDY","GO","GOAC","GOOG",
@@ -58,10 +58,9 @@ namespace MyPortfolio.DataGenerator
             File.WriteAllText(@"..\..\..\..\MockData\" + "trade-data.json", dailyTradeDataJson);
         }
 
-        private static void EnterDateRange(string DATE_FORMAT, out DateTime startDate, out DateTime endDate)
+        private static void EnterDateRange(string DATE_FORMAT, out DateTime startDate)
         {
             startDate = default;
-            endDate = default;
             try
             {
                 Console.Write("Enter Start Date (" + DATE_FORMAT + ") : ");
@@ -73,16 +72,6 @@ namespace MyPortfolio.DataGenerator
                 else
                 {
                     throw new Exception("start date is not in correct format!");
-                }
-                Console.Write("Enter End Date (" + DATE_FORMAT + ") : ");
-                var endDateInput = Console.ReadLine();
-                if (DateTime.TryParse(endDateInput, out DateTime endDateTimeValue))
-                {
-                    endDate = endDateTimeValue;
-                }
-                else
-                {
-                    throw new Exception("end date is not in correct format!");
                 }
             }
             catch (Exception ex)

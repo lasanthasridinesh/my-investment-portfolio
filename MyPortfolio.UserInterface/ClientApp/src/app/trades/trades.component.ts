@@ -8,13 +8,8 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 })
 
 export class TradesComponent {
-  //public currentCount = 0;
 
-  //public incrementCounter() {
-  //  this.currentCount++;
-  //}
-
-  public events: string[] = [];
+  //public events: string[] = [];
   public tradesArray: Trade[] = [];
   private baseUrl: string = "";
   private http: HttpClient;
@@ -25,7 +20,7 @@ export class TradesComponent {
   }
 
   public addEvent(type: string, event: MatDatepickerInputEvent<any, any>) {
-    this.events.push(`${type}: ${event.value}`);
+    //this.events.push(`${type}: ${event.value}`);
     console.log(event.value);
     if (event.value != null) {
       this.http.get<Trade[]>(this.baseUrl + 'trades?tradeDate=' + this.getDateString(event.value))
@@ -37,14 +32,14 @@ export class TradesComponent {
   }
 
   private getDateString(date: Date) {
-    return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
   }
 }
 
 interface Trade {
   ticker: string;
-  buyorsell: string;
+  buyOrSell: string;
   quantity: number;
-  price: number;
-  cost: number
+  unitPrice: number;
+  totalCost: number
 }

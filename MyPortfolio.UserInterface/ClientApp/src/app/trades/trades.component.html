@@ -13,6 +13,27 @@
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 
-<div class="example-events">
+<!--<div class="example-events">
   <div *ngFor="let e of tradesArray">{{e.ticker}}</div>
-</div>
+</div>-->
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="tradesArray">
+  <thead>
+    <tr>
+      <th>Ticker</th>
+      <th>Buy/Sell</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tradeItem of tradesArray">
+      <td>{{ tradeItem.ticker }}</td>
+      <td>{{ tradeItem.buyOrSell }}</td>
+      <td>{{ tradeItem.quantity }}</td>
+      <td>{{ tradeItem.unitPrice }}</td>
+      <td>{{ tradeItem.totalCost }}</td>
+    </tr>
+  </tbody>
+</table>
