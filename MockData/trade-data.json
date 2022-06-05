@@ -1,0 +1,29 @@
+[
+  {
+    "UserId": "user001",
+    "Ticker": "IBM",
+    "TradeDate": "2022-06-04",
+    "BuyOrSell": "Buy",
+    "Quantity": 100,
+    "UnitPrice": 85.95,
+    "TotalCost": 8595
+  },
+  {
+    "UserId": "user001",
+    "Ticker": "IBM",
+    "TradeDate": "2022-06-04",
+    "BuyOrSell": "Buy",
+    "Quantity": 100,
+    "UnitPrice": 85.95,
+    "TotalCost": 8595
+  },
+  {
+    "UserId": "user001",
+    "Ticker": "IBM",
+    "TradeDate": "2022-06-04",
+    "BuyOrSell": "Buy",
+    "Quantity": 100,
+    "UnitPrice": 85.95,
+    "TotalCost": 8595
+  }
+]

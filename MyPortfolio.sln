@@ -13,19 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Presentation", "04-Prese
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.UI", "MyPortfolio.UI\MyPortfolio.UI.csproj", "{B0DE23D4-48E0-48CF-8B8A-B718925AF4F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Services", "MyPortfolio.Services\MyPortfolio.Services.csproj", "{B8993C41-0A1F-4708-A6E4-E92787929D79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.Services", "MyPortfolio.Services\MyPortfolio.Services.csproj", "{B8993C41-0A1F-4708-A6E4-E92787929D79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Connectors", "MyPortfolio.Connectors\MyPortfolio.Connectors.csproj", "{B36F8FB4-789F-4A31-8B86-7668B32E29E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.Connectors", "MyPortfolio.Connectors\MyPortfolio.Connectors.csproj", "{B36F8FB4-789F-4A31-8B86-7668B32E29E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Repositories", "MyPortfolio.Repositories\MyPortfolio.Repositories.csproj", "{7362C19C-429C-4A7A-B9FA-DC383500EC21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.Repositories", "MyPortfolio.Repositories\MyPortfolio.Repositories.csproj", "{7362C19C-429C-4A7A-B9FA-DC383500EC21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.DBModel", "MyPortfolio.DBModel\MyPortfolio.DBModel.csproj", "{401EF2E2-228B-48B5-ACA1-8E7A115F5752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPortfolio.DBModel", "MyPortfolio.DBModel\MyPortfolio.DBModel.csproj", "{401EF2E2-228B-48B5-ACA1-8E7A115F5752}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-Tests", "05-Tests", "{EFD558BA-D753-4F51-B3DC-AB6ABA4F95AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{C9B22A26-F560-4C49-BF26-4AD81D019C26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{5CA54894-80AA-4E4D-BEB1-7CADBEFB24F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4D8E53BB-2DE3-4537-8F2C-8D045A0C6819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.DataGenerator", "MyPortfolio.DataGenerator\MyPortfolio.DataGenerator.csproj", "{C834CAED-2EB8-4586-8A46-7B7DB2961A0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{401EF2E2-228B-48B5-ACA1-8E7A115F5752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{401EF2E2-228B-48B5-ACA1-8E7A115F5752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{401EF2E2-228B-48B5-ACA1-8E7A115F5752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C834CAED-2EB8-4586-8A46-7B7DB2961A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C834CAED-2EB8-4586-8A46-7B7DB2961A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C834CAED-2EB8-4586-8A46-7B7DB2961A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C834CAED-2EB8-4586-8A46-7B7DB2961A0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +73,8 @@ Global
 		{401EF2E2-228B-48B5-ACA1-8E7A115F5752} = {679EDD07-7C06-4038-A56A-3C7394BEFACF}
 		{C9B22A26-F560-4C49-BF26-4AD81D019C26} = {EFD558BA-D753-4F51-B3DC-AB6ABA4F95AD}
 		{5CA54894-80AA-4E4D-BEB1-7CADBEFB24F7} = {EFD558BA-D753-4F51-B3DC-AB6ABA4F95AD}
+		{4D8E53BB-2DE3-4537-8F2C-8D045A0C6819} = {EFD558BA-D753-4F51-B3DC-AB6ABA4F95AD}
+		{C834CAED-2EB8-4586-8A46-7B7DB2961A0E} = {4D8E53BB-2DE3-4537-8F2C-8D045A0C6819}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A15EFE2-EA57-4C42-806C-4646A08E2F70}
