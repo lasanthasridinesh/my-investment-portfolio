@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GoogleChartInterface, GoogleChartType } from 'ng2-google-charts';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,44 @@ export class HomeComponent {
   public todaysDate = this.today.getFullYear() + '-'
     + (this.today.getMonth() + 1) + '-'
     + this.today.getDate();
+
+  public pieChart: GoogleChartInterface = {
+    chartType: GoogleChartType.PieChart,
+    dataTable: [
+      ['Task', 'Hours per Day'],
+      ['Work', 11],
+      ['Eat', 2],
+      ['Commute', 2],
+      ['Watch TV', 2],
+      ['Sleep', 7]
+    ],
+    //firstRowIsData: true,
+    options: {
+      'title': 'Tasks',
+      'is3D': true,
+      'width': 600,
+      'height': 500
+    },
+  };
+
+  public columnChart: GoogleChartInterface = {
+    chartType: GoogleChartType.ColumnChart,
+    dataTable: [
+      ['Task', 'Hours per Day'],
+      ['Work', 11],
+      ['Eat', 2],
+      ['Commute', 2],
+      ['Watch TV', 2],
+      ['Sleep', 7]
+    ],
+    //firstRowIsData: true,
+    options: {
+      'title': 'Tasks',
+      'is3D': true,
+      'width': 600,
+      'height': 500
+    },
+  };
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<PerformanceItem[]>(baseUrl + 'trades/performance').subscribe(result => {

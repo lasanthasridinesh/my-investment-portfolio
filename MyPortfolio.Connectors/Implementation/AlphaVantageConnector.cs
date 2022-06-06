@@ -34,7 +34,7 @@ namespace MyPortfolio.Connectors.Implementation
             //    Console.WriteLine(ex.Message);
             //    return null;
             //}
-            Random randomGenerator = new Random();
+            Random randomGenerator = new();
             return new AVQuoteResponseDTO()
             {
                 GlobalQuote = new GlobalQuote()
