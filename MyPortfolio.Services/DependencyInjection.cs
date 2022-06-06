@@ -16,7 +16,7 @@ namespace MyPortfolio.Services
         public static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddScoped<ITradesRepository, TradesRepository>();
-            services.AddScoped<IAlphaVantageConnector, AlphaVantageConnector>();
+            services.AddHttpClient<IAlphaVantageConnector, AlphaVantageConnector>();
             return services;
         }
     }

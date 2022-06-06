@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -14,12 +15,20 @@ namespace MyPortfolio.Connectors.Implementation
     public class AlphaVantageConnector : IAlphaVantageConnector
     {
         private static readonly string ALPHAVANTAGE_QUOTE_URL = "https://www.alphavantage.co/";
+        private readonly HttpClient _httpClient;
+
+        public AlphaVantageConnector(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri(ALPHAVANTAGE_QUOTE_URL);
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
         public async Task<AVQuoteResponseDTO?> GetQuoteBySymbolAsync(string symbol)
         {
             try
             {
-                using var client = GetHttpClient(ALPHAVANTAGE_QUOTE_URL);
-                HttpResponseMessage response = await client.GetAsync("query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=WPH7BD3Z21TXEIWM");
+                HttpResponseMessage response = await _httpClient.GetAsync("query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=WPH7BD3Z21TXEIWM");
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -38,6 +47,7 @@ namespace MyPortfolio.Connectors.Implementation
 
         /// <summary>
         /// Mock Data Method
+        /// This will be used the test the system without connecting to AlphaVantage
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
@@ -54,13 +64,5 @@ namespace MyPortfolio.Connectors.Implementation
         //        }
         //    };
         //}
-
-        private static HttpClient GetHttpClient(string url)
-        {
-            var client = new HttpClient { BaseAddress = new Uri(url) };
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            return client;
-        }
     }
 }

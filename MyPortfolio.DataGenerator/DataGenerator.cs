@@ -32,17 +32,19 @@ namespace MyPortfolio.DataGenerator
                     var dailyTradeCount = new Random().Next(1, 3);
                     for (var j = 0; j < dailyTradeCount; j++)
                     {
-                        var quantity = RandomSupplier.Quantity();
                         var price = RandomSupplier.Price();
+                        var buyOrSell = RandomSupplier.BuyOrSell();
+                        var quantity = buyOrSell == "Buy" ? RandomSupplier.BuyQuantity() : RandomSupplier.SellQuantity();
+                        var cost = Math.Round(quantity * price, 2);
                         trades.Add(new Trade()
                         {
                             UserId = "user001",
-                            BuyOrSell = RandomSupplier.BuyOrSell(),
+                            BuyOrSell = buyOrSell,
                             Quantity = quantity,
                             Ticker = symbol,
                             UnitPrice = price,
                             TradeDate = startDate.AddDays(i),
-                            TotalCost = Math.Round(quantity * price, 2)
+                            TotalCost = buyOrSell == "Buy" ? cost : (-cost)
                         });
                     }
                 }

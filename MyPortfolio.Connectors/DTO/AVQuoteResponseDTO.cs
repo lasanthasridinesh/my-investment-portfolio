@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyPortfolio.Connectors.DTO
 {
-    public class GlobalQuote
+    public class GlobalQuoteResponseDTO
     {
         [JsonPropertyName("01. symbol")]
         public string? Symbol { get; set; }
@@ -20,6 +20,6 @@ namespace MyPortfolio.Connectors.DTO
     public class AVQuoteResponseDTO
     {
         [JsonPropertyName("Global Quote")]
-        public GlobalQuote? GlobalQuote { get; set; }
+        public GlobalQuoteResponseDTO? GlobalQuote { get; set; }
     }
 }

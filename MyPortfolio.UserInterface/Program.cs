@@ -6,10 +6,10 @@ using MyPortfolio.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddRepository();
+
+// Add services to the container.
 builder.Services.AddScoped<ITradeService, TradeService>();
 builder.Services.AddScoped<IPerformanceService, PerformanceService>();
 

@@ -43,7 +43,8 @@ namespace MyPortfolio.Services.Implementation
                         }
                         else
                         {
-                            tradesBySymbol.Add(item.Ticker, new List<Trade>());
+                            var newList = new List<Trade>() { item };
+                            tradesBySymbol.Add(item.Ticker, newList);
                         }
                     }
                 }
@@ -54,7 +55,7 @@ namespace MyPortfolio.Services.Implementation
             foreach (var pair in tradesBySymbol)
             {
                 var cost = pair.Value.Sum(t => t.TotalCost);
-                var quantity = pair.Value.Sum(t => t.Quantity);
+                var quantity = pair.Value.Sum(t => t.BuyOrSell == "Buy" ? t.Quantity : (-t.Quantity));
                 var price = prices[pair.Key].Price;
                 var previousClose = prices[pair.Key].PreviousClose;
                 var marketValue = quantity * price;

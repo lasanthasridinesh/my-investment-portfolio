@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace MyPortfolio.Services.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class TradesServiceTests
     {
         [TestMethod]
         public void TestMethod1()

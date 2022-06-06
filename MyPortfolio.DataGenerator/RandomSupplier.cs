@@ -22,10 +22,16 @@ namespace MyPortfolio.DataGenerator
             }
         }
 
-        internal static int Quantity()
+        internal static int BuyQuantity()
         {
             Random random = new Random();
-            return random.Next(1, 30);
+            return random.Next(20, 40);
+        }
+
+        internal static int SellQuantity()
+        {
+            Random random = new Random();
+            return random.Next(10, 20);
         }
 
         internal static decimal Price()
