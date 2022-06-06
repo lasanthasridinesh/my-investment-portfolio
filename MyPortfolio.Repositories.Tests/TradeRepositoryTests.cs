@@ -25,7 +25,7 @@ namespace MyPortfolio.Repositories.Tests
 
             //Assert
             Assert.IsNotNull(trades);
-            Assert.IsTrue(trades.Count == 2);
+            Assert.AreEqual(trades.Count, 2);
             var trade1 = trades.Where(t => t.UserId == "user001").FirstOrDefault();
             var trade2 = trades.Where(t => t.UserId == "user002").FirstOrDefault();
 

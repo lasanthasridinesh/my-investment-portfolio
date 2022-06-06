@@ -1,4 +1,8 @@
+using Moq;
 using MyPortfolio.Connectors.DTO;
+using MyPortfolio.DBModel.DOM;
+using MyPortfolio.Repositories.Interfaces;
+using MyPortfolio.Services.Implementation;
 using System.Text.Json;
 
 namespace MyPortfolio.Services.Tests
@@ -6,17 +10,39 @@ namespace MyPortfolio.Services.Tests
     [TestClass]
     public class TradesServiceTests
     {
+        private readonly Mock<ITradesRepository> _tradesRepositoryMock = new();
+        private readonly TradeService _tradeService;
+
+        public TradesServiceTests()
+        {
+            _tradeService = new TradeService(_tradesRepositoryMock.Object);
+        }
+
         [TestMethod]
-        public void TestMethod1()
+        public void GetTradesByDate_ValidDate_ReturnsDto()
         {
             //Arrange
-            var jsonText = "{\n    \"Global Quote\": {\n        \"01. symbol\": \"IBM\",\n        \"02. open\": \"140.2600\",\n        \"03. high\": \"142.5794\",\n        \"04. low\": \"139.7400\",\n        \"05. price\": \"141.1800\",\n        \"06. volume\": \"4352213\",\n        \"07. latest trading day\": \"2022-06-03\",\n        \"08. previous close\": \"140.1500\",\n        \"09. change\": \"1.0300\",\n        \"10. change percent\": \"0.7349%\"\n    }\n}";
+            var tradesList = new List<Trade>()
+            {
+                new Trade(){Ticker="IBM1",UserId="user001",BuyOrSell="Buy",Quantity=10,UnitPrice=50.55M,TotalCost=505.50M,TradeDate=DateTime.Today}
+            };
+            _tradesRepositoryMock.Setup(tr => tr.GetTradesFor(DateTime.Today)).Returns(tradesList);
 
             //Act
-            var quoteResponse = JsonSerializer.Deserialize<AVQuoteResponseDTO>(jsonText);
+            var tradeDTOs = _tradeService.GetTradesByDate(DateTime.Today);
 
             //Assert
-            Assert.IsNotNull(quoteResponse);
+            Assert.IsNotNull(tradeDTOs);
+            Assert.AreEqual(tradeDTOs.Count, 1);
+            var tradeDTO1 = tradeDTOs.Where(t => t.UserId == "user001").FirstOrDefault();
+
+            Assert.IsNotNull(tradeDTO1);
+            Assert.AreEqual(tradeDTO1.Ticker, "IBM1");
+            Assert.AreEqual(tradeDTO1.BuyOrSell, "Buy");
+            Assert.AreEqual(tradeDTO1.Quantity, 10);
+            Assert.AreEqual(tradeDTO1.UnitPrice, 50.55M);
+            Assert.AreEqual(tradeDTO1.TotalCost, 505.50M);
+            Assert.AreEqual(tradeDTO1.TradeDate, DateTime.Today);
         }
     }
 }
