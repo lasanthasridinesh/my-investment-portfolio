@@ -25,7 +25,7 @@ namespace MyPortfolio.DataGenerator
         internal static int Quantity()
         {
             Random random = new Random();
-            return random.Next(1, 150);
+            return random.Next(1, 30);
         }
 
         internal static decimal Price()
