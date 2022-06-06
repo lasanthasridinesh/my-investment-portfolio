@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GoogleChartInterface, GoogleChartType } from 'ng2-google-charts';
 
@@ -36,8 +36,7 @@ export class HomeComponent {
     },
   };
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
-    private cdr: ChangeDetectorRef) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
     http.get<PerformanceItem[]>(baseUrl + 'trades/performance').subscribe(result => {
       this.performanceData = result;
@@ -60,8 +59,6 @@ export class HomeComponent {
         dataTablePieChart[i][1] = result[i - 1].quantity;
       }
       this.pieChart.dataTable = dataTablePieChart;
-
-      this.cdr.detectChanges();
 
     }, error => console.error(error));
 

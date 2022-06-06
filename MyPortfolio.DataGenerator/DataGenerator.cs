@@ -22,15 +22,14 @@ namespace MyPortfolio.DataGenerator
             EnterDateRange(Constants.DATE_FORMAT, out DateTime startDate);
             DateTime endDate = DateTime.Today;
             var numberOfDays = (endDate - startDate).TotalDays;
-            var symbols = new List<string> { "GOOG", "IBM", "MSA", "MSACX", "DEMO" };
+            var symbols = new List<string> { "GOOG", "IBM", "MSA", "MSACX", "NKE" };
             var trades = new List<Trade>();
 
             for (var i = 0; i <= numberOfDays; i++)
             {
-
                 foreach (var symbol in symbols)
                 {
-                    var dailyTradeCount = new Random().Next(0, 2);
+                    var dailyTradeCount = new Random().Next(1, 3);
                     for (var j = 0; j < dailyTradeCount; j++)
                     {
                         var quantity = RandomSupplier.Quantity();
