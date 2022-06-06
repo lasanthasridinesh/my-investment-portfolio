@@ -16,19 +16,13 @@ namespace MyPortfolio.DataGenerator
             Console.WriteLine("########################################################");
             Console.WriteLine("            My Portfolio - Test Data Generator");
             Console.WriteLine("########################################################");
-            Console.WriteLine("When you enter the start date and end date, application will\n" +
-                "generate a set of JSON files with test data. " +
-                "One JSON file will be generated per day.");
-
+            Console.WriteLine("When you enter the start date, application will\n" +
+                "generate a JSON file with test data.");
 
             EnterDateRange(Constants.DATE_FORMAT, out DateTime startDate);
             DateTime endDate = DateTime.Today;
             var numberOfDays = (endDate - startDate).TotalDays;
-            var symbols = new List<string> { "A", "A.TRV", "B", "B.TRV",
-                "C", "C.TRV", "IBM","TSCDF","TSCDY","GO","GOAC","GOOG",
-                "GOODN","GOODLUCK.BSE","NKE","NKE.DEX","PU13.LON","MSA","MSACX",
-                "DIS","DISA","DISAQ.BSE","TATACHEM.BSE","TATAINVEST.BSE","TATAMTRDVR.BSE",
-                "DEMO","TESS","SPACEINCUBA.BSE"};
+            var symbols = new List<string> { "GOOG", "IBM", "MSA", "MSACX", "DEMO" };
             var trades = new List<Trade>();
 
             for (var i = 0; i <= numberOfDays; i++)
@@ -36,7 +30,7 @@ namespace MyPortfolio.DataGenerator
 
                 foreach (var symbol in symbols)
                 {
-                    var dailyTradeCount = new Random().Next(1, 25);
+                    var dailyTradeCount = new Random().Next(0, 2);
                     for (var j = 0; j < dailyTradeCount; j++)
                     {
                         var quantity = RandomSupplier.Quantity();

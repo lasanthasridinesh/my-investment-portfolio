@@ -25,13 +25,13 @@ namespace MyPortfolio.DataGenerator
         internal static int Quantity()
         {
             Random random = new Random();
-            return random.Next(10, 5000);
+            return random.Next(1, 150);
         }
 
         internal static decimal Price()
         {
             Random random = new Random();
-            return (decimal)(random.Next(1000, 100000) / 100.00);
+            return (decimal)(random.Next(1000, 10000) / 100.00);
         }
     }
 }

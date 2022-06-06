@@ -16,24 +16,34 @@ namespace MyPortfolio.Connectors.Implementation
         private static readonly string ALPHAVANTAGE_QUOTE_URL = "https://www.alphavantage.co/";
         public async Task<AVQuoteResponseDTO?> GetQuoteBySymbolAsync(string symbol)
         {
-            try
-            {
-                using var client = GetHttpClient(ALPHAVANTAGE_QUOTE_URL);
-                HttpResponseMessage response = await client.GetAsync("query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=WPH7BD3Z21TXEIWM");
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var result = JsonSerializer.Deserialize<AVQuoteResponseDTO>(json);
-                    return result;
-                }
+            //try
+            //{
+            //    using var client = GetHttpClient(ALPHAVANTAGE_QUOTE_URL);
+            //    HttpResponseMessage response = await client.GetAsync("query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=WPH7BD3Z21TXEIWM");
+            //    if (response.StatusCode == HttpStatusCode.OK)
+            //    {
+            //        var json = await response.Content.ReadAsStringAsync();
+            //        var result = JsonSerializer.Deserialize<AVQuoteResponseDTO>(json);
+            //        return result;
+            //    }
 
-                return null;
-            }
-            catch (Exception ex)
+            //    return null;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    return null;
+            //}
+            Random randomGenerator = new Random();
+            return new AVQuoteResponseDTO()
             {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+                GlobalQuote = new GlobalQuote()
+                {
+                    Symbol = symbol,
+                    Price = (randomGenerator.Next(1000, 10000) / 100.00).ToString(),
+                    Priviousclose = (randomGenerator.Next(1000, 10000) / 100.00).ToString()
+                }
+            };
         }
 
         private static HttpClient GetHttpClient(string url)

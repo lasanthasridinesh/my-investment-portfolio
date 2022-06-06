@@ -9,6 +9,8 @@ Simply download and run the MyPortfolio.UserInterface project.
 
 There is a DataGenerator Console App added inside the (Solution)/05-Tests/Data folder. You can run it and provide a start date so that you can generate mock trade data from the given date.
 
+Please note that AlphaVantage has limited the API requests to 5 per minute and 500 requests per day. Therefore mock data is limited to 5 types of equities.
+
 ## Objective of the application
 Application should have the following features:
 1.	Read portfolio information from persistent storage
