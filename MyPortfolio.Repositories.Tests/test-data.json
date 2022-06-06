@@ -1,0 +1,20 @@
+[
+  {
+    "Ticker": "IBM1",
+    "UserId": "user001",
+    "BuyOrSell": "Buy",
+    "Quantity": 10,
+    "UnitPrice": 50.55,
+    "TotalCost": 505.50,
+    "TradeDate": "2001-01-01"
+  },
+  {
+    "Ticker": "IBM2",
+    "UserId": "user002",
+    "BuyOrSell": "Sell",
+    "Quantity": 5,
+    "UnitPrice": 55.55,
+    "TotalCost": 277.75,
+    "TradeDate": "2001-01-02"
+  }
+]

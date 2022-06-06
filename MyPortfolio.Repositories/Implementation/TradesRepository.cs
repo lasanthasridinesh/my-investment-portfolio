@@ -12,15 +12,30 @@ namespace MyPortfolio.Repositories.Implementation
 {
     public class TradesRepository : ITradesRepository
     {
-        private readonly static ConcurrentDictionary<DateTime, IList<Trade>>
-            tradesTable = new();
+        private static ConcurrentDictionary<DateTime, IList<Trade>> tradesTable = new();
+        private string DATA_FILE_PATH = @"..\MockData\" + "trade-data.json";
 
         public TradesRepository()
+        {
+            SetData();
+        }
+
+        /// <summary>
+        /// This constructor will be used for testing
+        /// </summary>
+        /// <param name="testDataFilePath"></param>
+        public TradesRepository(string testDataFilePath)
+        {
+            if (testDataFilePath != null) { DATA_FILE_PATH = testDataFilePath; }
+            SetData();
+        }
+
+        private void SetData()
         {
             if (tradesTable.IsEmpty)
             {
                 var data = JsonSerializer.Deserialize<IList<Trade>>(
-                    File.ReadAllText(@"..\MockData\" + "trade-data.json"));
+                    File.ReadAllText(DATA_FILE_PATH));
                 if (data != null)
                 {
                     foreach (var dataItem in data)
@@ -31,7 +46,10 @@ namespace MyPortfolio.Repositories.Implementation
                         }
                         else
                         {
-                            tradesTable[dataItem.TradeDate] = new List<Trade>();
+                            tradesTable[dataItem.TradeDate] = new List<Trade>()
+                            {
+                                dataItem
+                            };
                         }
                     }
                 }
