@@ -8,8 +8,6 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 })
 
 export class TradesComponent {
-
-  //public events: string[] = [];
   public tradesArray: Trade[] = [];
   private baseUrl: string = "";
   private http: HttpClient;
@@ -20,7 +18,6 @@ export class TradesComponent {
   }
 
   public addEvent(type: string, event: MatDatepickerInputEvent<any, any>) {
-    //this.events.push(`${type}: ${event.value}`);
     console.log(event.value);
     if (event.value != null) {
       this.http.get<Trade[]>(this.baseUrl + 'trades?tradeDate=' + this.getDateString(event.value))

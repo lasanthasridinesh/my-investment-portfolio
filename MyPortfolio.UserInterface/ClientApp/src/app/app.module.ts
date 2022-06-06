@@ -9,15 +9,13 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { TradesComponent } from './trades/trades.component';
 import { MaterialModule } from './material.module';
-import { PerformanceComponent } from './performance/performance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    TradesComponent,
-    PerformanceComponent
+    TradesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,8 +24,7 @@ import { PerformanceComponent } from './performance/performance.component';
     MaterialModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'daily-trades', component: TradesComponent },
-      { path: 'performance', component: PerformanceComponent }
+      { path: 'daily-trades', component: TradesComponent }
     ])
   ],
   providers: [],

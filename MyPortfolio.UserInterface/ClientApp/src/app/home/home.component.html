@@ -1,14 +1,48 @@
-<h3>Statement of Assets</h3>
-<p>Overview of your Assets upto now!</p>
+<h2 id="tableLabel">Portfolio Performance</h2>
+
+<p>Here is the performance of your portfolio as of <strong>{{todaysDate}}</strong>.</p>
+
+<!--Performance Table-->
 <div class="row">
   <div class="col-md-12">
-    <img class="img-fluid" src="assets/table.jpg" />
+    <p *ngIf="!performanceList"><em>Loading...</em></p>
+    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="performanceList">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Cost($)</th>
+          <th>Quantity</th>
+          <th>Price($)</th>
+          <th>Market Value($)</th>
+          <th>Prev Close($)</th>
+          <th>Daily P&L($)</th>
+          <th>Inception P&L($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of performanceList">
+          <td>{{ item.ticker }}</td>
+          <td>{{ item.cost }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.marketValue }}</td>
+          <td>{{ item.previousClose }}</td>
+          <td>{{ item.dailyPandL }}</td>
+          <td>{{ item.inceptionPandL }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
 <div class="row">
+
+  <!--Column Graph-->
   <div class="col-md-6">
     <img class="img-fluid" src="assets/column.jpg" />
   </div>
+
+  <!--Pie Chart-->
   <div class="col-md-6">
     <img class="img-fluid" src="assets/pie.jpg" />
   </div>

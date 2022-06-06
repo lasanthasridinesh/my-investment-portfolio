@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Remove="ClientApp\src\app\performance\performance.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="ClientApp\src\assets\column.jpg" />
     <Content Include="ClientApp\src\assets\pie.jpg" />
     <Content Include="ClientApp\src\assets\table.jpg" />
