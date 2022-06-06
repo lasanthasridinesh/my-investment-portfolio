@@ -5,8 +5,8 @@
 <!--Performance Table-->
 <div class="row">
   <div class="col-md-12">
-    <p *ngIf="!performanceList"><em>Loading...</em></p>
-    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="performanceList">
+    <div *ngIf="performanceData===[]"><p>Loading...</p></div>
+    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="performanceData!==[]">
       <thead>
         <tr>
           <th>Ticker</th>
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of performanceList">
+        <tr *ngFor="let item of performanceData">
           <td>{{ item.ticker }}</td>
           <td>{{ item.cost }}</td>
           <td>{{ item.quantity }}</td>

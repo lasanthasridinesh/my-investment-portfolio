@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GoogleChartInterface, GoogleChartType } from 'ng2-google-charts';
 
@@ -8,7 +8,7 @@ import { GoogleChartInterface, GoogleChartType } from 'ng2-google-charts';
 })
 
 export class HomeComponent {
-  public performanceList: PerformanceItem[] = [];
+  public performanceData: PerformanceItem[] = [];
   private today = new Date();
   public todaysDate = this.today.getFullYear() + '-'
     + (this.today.getMonth() + 1) + '-'
@@ -16,17 +16,9 @@ export class HomeComponent {
 
   public pieChart: GoogleChartInterface = {
     chartType: GoogleChartType.PieChart,
-    dataTable: [
-      ['Task', 'Hours per Day'],
-      ['Work', 11],
-      ['Eat', 2],
-      ['Commute', 2],
-      ['Watch TV', 2],
-      ['Sleep', 7]
-    ],
-    //firstRowIsData: true,
+    firstRowIsData: false,
     options: {
-      'title': 'Tasks',
+      'title': 'Precentage of each equity in portfolio',
       'is3D': true,
       'width': 600,
       'height': 500
@@ -35,27 +27,44 @@ export class HomeComponent {
 
   public columnChart: GoogleChartInterface = {
     chartType: GoogleChartType.ColumnChart,
-    dataTable: [
-      ['Task', 'Hours per Day'],
-      ['Work', 11],
-      ['Eat', 2],
-      ['Commute', 2],
-      ['Watch TV', 2],
-      ['Sleep', 7]
-    ],
-    //firstRowIsData: true,
+    firstRowIsData: false,
     options: {
-      'title': 'Tasks',
+      'title': 'Daily and Inception P&L agains equity',
       'is3D': true,
       'width': 600,
       'height': 500
     },
   };
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
+    private cdr: ChangeDetectorRef) {
+
     http.get<PerformanceItem[]>(baseUrl + 'trades/performance').subscribe(result => {
-      this.performanceList = result;
+      this.performanceData = result;
+
+      var dataTableColumnChart: any[][] = [];
+      dataTableColumnChart[0] = ['Ticker', 'Daily P&L', 'Inception P&L'];
+      for (var i = 1; i <= result.length; i++) {
+        dataTableColumnChart[i] = [];
+        dataTableColumnChart[i][0] = result[i - 1].ticker;
+        dataTableColumnChart[i][1] = result[i - 1].dailyPandL;
+        dataTableColumnChart[i][2] = result[i - 1].inceptionPandL;
+      }
+      this.columnChart.dataTable = dataTableColumnChart;
+
+      var dataTablePieChart: any[][] = [];
+      dataTablePieChart[0] = ['Ticker', 'Quantity'];
+      for (var i = 1; i <= result.length; i++) {
+        dataTablePieChart[i] = [];
+        dataTablePieChart[i][0] = result[i - 1].ticker;
+        dataTablePieChart[i][1] = result[i - 1].quantity;
+      }
+      this.pieChart.dataTable = dataTablePieChart;
+
+      this.cdr.detectChanges();
+
     }, error => console.error(error));
+
   }
 }
 
