@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyPortfolio.Connectors.Implementation;
+using MyPortfolio.Connectors.Interfaces;
 using MyPortfolio.Repositories.Implementation;
 using MyPortfolio.Repositories.Interfaces;
 using System;
@@ -14,6 +16,7 @@ namespace MyPortfolio.Services
         public static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddScoped<ITradesRepository, TradesRepository>();
+            services.AddScoped<IAlphaVantageConnector, AlphaVantageConnector>();
             return services;
         }
     }

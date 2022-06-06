@@ -12,7 +12,8 @@ namespace MyPortfolio.Repositories.Implementation
 {
     public class TradesRepository : ITradesRepository
     {
-        private readonly static ConcurrentDictionary<DateTime, IList<Trade>> tradesTable = new();
+        private readonly static ConcurrentDictionary<DateTime, IList<Trade>>
+            tradesTable = new();
 
         public TradesRepository()
         {
@@ -35,6 +36,18 @@ namespace MyPortfolio.Repositories.Implementation
                     }
                 }
             }
+        }
+
+        public IList<Trade>? GetAllTrades()
+        {
+            var trades = new List<Trade>();
+
+            foreach (var tradeList in tradesTable.Values)
+            {
+                trades.AddRange(tradeList);
+            }
+
+            return trades;
         }
 
         public IList<Trade>? GetTradesFor(DateTime date)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPortfolio.Connectors.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace MyPortfolio.Connectors.Interfaces
 {
     public interface IAlphaVantageConnector
     {
+        Task<AVQuoteResponseDTO?> GetQuoteBySymbolAsync(string symbol);
     }
 }

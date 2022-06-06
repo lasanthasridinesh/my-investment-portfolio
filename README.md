@@ -1,4 +1,14 @@
 # My Investment Portfolio
+
+## Prerequisites to run the application
+01. Visual Studio 2022
+02. Microsoft.NETCore.App 6.0.5
+03. Microsoft.AspNetCore.App 6.0.5
+
+Simply download and run the MyPortfolio.UserInterface project.
+
+There is a DataGenerator Console App added inside the (Solution)/05-Tests/Data folder. You can run it and provide a start date so that you can generate mock trade data from the given date.
+
 ## Objective of the application
 Application should have the following features:
 1.	Read portfolio information from persistent storage

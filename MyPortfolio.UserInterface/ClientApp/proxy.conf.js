@@ -22,6 +22,16 @@ const PROXY_CONFIG = [
     secure: false,
     headers: {
       Connection: 'Keep-Alive'
+    },
+  },
+  {
+    context: [
+      "/trades/performance",
+    ],
+    target: target,
+    secure: false,
+    headers: {
+      Connection: 'Keep-Alive'
     }
   }
 ]

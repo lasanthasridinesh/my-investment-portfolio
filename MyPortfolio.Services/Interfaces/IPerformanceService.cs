@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPortfolio.Services.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace MyPortfolio.Services.Interfaces
 {
     public interface IPerformanceService
     {
-
+        Task<IList<PerformanceItemDTO>> GetPerformanceAsync();
     }
 }

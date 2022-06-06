@@ -6,18 +6,26 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './performance.component.html'
 })
 export class PerformanceComponent {
-  public forecasts: WeatherForecast[] = [];
+  public performanceList: PerformanceItem[] = [];
+  private today= new Date();
+  public todaysDate = this.today.getFullYear() + '-'
+    + (this.today.getMonth() + 1) + '-'
+    + this.today.getDate();
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
+    http.get<PerformanceItem[]>(baseUrl + 'trades/performance').subscribe(result => {
+      this.performanceList = result;
     }, error => console.error(error));
   }
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+interface PerformanceItem {
+  ticker: string;
+  cost: number;
+  quantity: number;
+  price: number;
+  marketValue: number;
+  previousClose: number;
+  dailyPandL: number;
+  inceptionPandL: number;
 }
