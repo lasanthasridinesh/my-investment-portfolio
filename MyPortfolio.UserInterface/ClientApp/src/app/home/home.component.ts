@@ -36,6 +36,8 @@ export class HomeComponent {
     },
   };
 
+  public showHide: boolean = true;
+
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
     http.get<PerformanceItem[]>(baseUrl + 'trades/performance').subscribe(result => {
@@ -59,6 +61,8 @@ export class HomeComponent {
         dataTablePieChart[i][1] = result[i - 1].quantity;
       }
       this.pieChart.dataTable = dataTablePieChart;
+
+      this.showHide = false;
 
     }, error => console.error(error));
 
